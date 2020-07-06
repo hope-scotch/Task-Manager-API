@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
         const token = req.header('Authorization').replace('Bearer ', '')
 
         // Validate token -> created by our server, and hasn't expired 
-        const decoded = jwt.verify(token, 'AuthTokenSignature')
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
         // 1. The token has to be part of the tokens array (If the user logs out, token will be deleted)
         // 2. The token has to contain the embed _id

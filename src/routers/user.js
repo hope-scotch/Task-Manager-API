@@ -3,6 +3,7 @@ import multer from 'multer'
 import { User } from '../models/user.js'
 import { auth } from '../middleware/auth.js'
 import sharp from 'sharp'
+import { welcomeEmail, goodbyeEmail } from '../emails/account.js'
 
 const router = new express.Router()
 
@@ -37,6 +38,9 @@ router.post('/users', async (req, res) => {
     try {
         await user.save() // If promise was fulfilled
 
+        // sgMail.send() returns a promise but we don't need the task to wait unless an email is sent
+        // The task app can carry on while send-grid sends its email
+        welcomeEmail(user.email, user.name)
         const token = await user.generateAuthToken() // On the User instance => There's only 1 ID attached, so no need to pass it to the function
         
         res.status(201).send({ user, token })
@@ -231,6 +235,7 @@ router.patch('/users/me', auth, async (req, res) => {
 router.delete('/users/me', auth, async (req, res) => {
 
     try {
+        goodbyeEmail(req.user.email, req.user.name)
         await req.user.remove()
         res.send(req.user)
     } catch (e) {

@@ -10,7 +10,7 @@ const ObjectID = mongodb.ObjectId
 **/
 
 // Destructure instead
-import mongodb from 'mongodb' // Does not support named exports -> Destructure after import
+const mongodb = require('mongodb') // Does not support named exports -> Destructure after import
 
 const { MongoClient, ObjectID } = mongodb
 

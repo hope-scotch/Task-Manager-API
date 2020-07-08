@@ -1,8 +1,8 @@
-import mongoose from 'mongoose'
-import validator from 'validator'
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import { Task } from './task.js'
+const mongoose = require('mongoose')
+const validator = require('validator')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const Task = require('./task.js')
 
 // To use middleware, use mongoose.Schema(Object Definition)
 const userSchema = new mongoose.Schema({ //an Object containing all the required fields
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({ //an Object containing all the required
                 throw new Error('Password cannot contain \"password\"')
         }
     },
-    // Tracking tokens is necessary to manage log-in and log-outs from multiple devices
+    // Tracking tokens is necessary to manage log-in and log-outs = require(multiple devices
     tokens: [{
         token: {
             type: String,
@@ -124,7 +124,7 @@ userSchema.methods.toJSON = function() {
     delete userObject.tokens
 
     // Delete binary data since we have served up the image, and this is no longer necessary
-    // We have only removed it from the profile response, because we don't need the server to send back binary image data
+    // We have only removed it = require(the profile response, because we don't need the server to send back binary image data
     delete userObject.avatar
 
     return userObject
@@ -133,7 +133,7 @@ userSchema.methods.toJSON = function() {
 // statics are available on the models
 // Hash Password
 // To do something BEFORE an operation
-// We need to use a standard function because the 'this' binding plays an import role
+// We need to use a standard function because the 'this' binding plays an const role
 userSchema.pre('save', async function (next) {
 
     // We need to use the save() whenever we want to use the middleware and accordingly change the code
@@ -183,4 +183,4 @@ me.save().then( (result) => {
      console.log(error)
 }) */
 
-export { User }
+module.exports = User

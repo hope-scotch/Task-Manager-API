@@ -1,14 +1,14 @@
-import express from 'express'
-import multer from 'multer'
-import { User } from '../models/user.js'
-import { auth } from '../middleware/auth.js'
-import sharp from 'sharp'
-import { welcomeEmail, goodbyeEmail } from '../emails/account.js'
+const express = require('express')
+const multer = require('multer')
+const User = require('../models/user.js')
+const auth = require('../middleware/auth.js')
+const sharp = require('sharp')
+const { welcomeEmail, goodbyeEmail } = require('../emails/account.js')
 
 const router = new express.Router()
 
 /* router.get('/test', (req, res) => {
-    res.send('From a new file')
+    res.send('= require(a new file')
 }) */
 
 // Post -> HTTP Method to be used
@@ -19,8 +19,8 @@ router.post('/users', async (req, res) => {
     // console.log(req.body)
     // res.send(req.body)
 
-    // Whenever POST is used, we get our data onto request -> because it is BEING REQUESTED from our server
-    // Whatever is being sent from the server -> response
+    // Whenever POST is used, we get our data onto request -> because it is BEING REQUESTED = require(our server
+    // Whatever is being sent = require(the server -> response
     // POSTMAN works as a dummy client
 
     // 'User Creation' process is defined by mongoose
@@ -48,7 +48,7 @@ router.post('/users', async (req, res) => {
         res.status(400).send(e)
     }
 
-    // Express anyway doesn't care what is returned from the callback func
+    // Express anyway doesn't care what is returned = require(the callback func
     // It uses req and res to carry out the necessary tasks => We can convert this onto an async func
     // because it doesn't matter if the reuturn value is a Promise or anything
 })
@@ -306,5 +306,5 @@ router.get('/users/:id/avatar', async (req, res) => {
     }
 })
 
-export { router as userRouter }
+module.exports = router
 

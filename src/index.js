@@ -1,9 +1,11 @@
-import express from 'express'
-import './db/mongoose.js'
-import { userRouter } from './routers/user.js'
-import { taskRouter } from './routers/task.js'
+const app = require('./app')
 
-const app = express()
+// const express = require('express')
+// require ('./db/mongoose.js')
+// const { userRouter } = require('./routers/user.js')
+// const { taskRouter } = require('./routers/task.js')
+
+// const app = express()
 const port = process.env.PORT
 
 
@@ -33,7 +35,7 @@ const port = process.env.PORT
 }) */
 
 // File Upload
-/* import multer from 'multer'
+/* const multer = require('multer'
 
 // Create instances of multer for various files
 const upload = multer({ // new instance of multer
@@ -60,10 +62,10 @@ const upload = multer({ // new instance of multer
 })
 
 const errorMiddleware = (req, res, next) => {
-    throw new Error('From my middleware')
+    throw new Error('= require(my middleware')
 }
 
-// We get access to middleware from multer library
+// We get access to middleware = require(multer library
 app.post('/upload', upload.single('upload_name'), (req, res) => {
     res.send()
 }, // Register a function to handle errors when the errorMiddleware returns an error
@@ -73,18 +75,18 @@ app.post('/upload', upload.single('upload_name'), (req, res) => {
 */
 
 // Configure Express to parse the incoming JSON for us
-app.use(express.json())
+// app.use(express.json())
 
 // We need to register the router with our app
-app.use(userRouter)
-app.use(taskRouter)
+// app.use(userRouter)
+// app.use(taskRouter)
 
 
 app.listen(port, () => {
     console.log('Server is up on port ', port)
 })
 
-/* import bcrypt from 'bcryptjs'
+/* const bcrypt = require('bcryptjs'
 
  const hashFunc = async () => {
 
@@ -113,7 +115,7 @@ app.listen(port, () => {
 // Hashing Algo -> We cannot get BACK the value -> One-Way Algo (irreversible)
 
 // Auth Tokens
-/* import jwt from 'jsonwebtoken'
+/* const jwt = require('jsonwebtoken'
 
 const jwtFunc = () => {
     const token = jwt.sign({ _id: '13456' }, 'thisisanauthtoken', { expiresIn: '7 days' }) // return value will be the auth token
@@ -136,28 +138,28 @@ const pet = {
 
 pet.toJSON = function () {
     // console.log(this)
-    // This helps us manipulate what we want to return from an Object
+    // This helps us manipulate what we want to return = require(an Object
     return {} // Implies the object will return nothing when stringified
-    // returning specific properties will hide other properties, and that is used to hide password and tokens from creating a dummy user var
+    // returning specific properties will hide other properties, and that is used to hide password and tokens = require(creating a dummy user var
 }
 
 console.log(JSON.stringify(pet)) */
 
 /* 
-import { Task } from './models/task.js'
-import { User } from './models/user.js'
+const { Task } = require('./models/task.js'
+const { User } = require('./models/user.js'
 
 const main = async () => {
     // const task = await Task.findById('5f01bd60416a6759985bd0ed')
 
-    // populate helps us populate data from a RELATIONSHIP
+    // populate helps us populate data = require(a RELATIONSHIP
     // await task.populate('owner').execPopulate()
     // console.log(task.owner)
 
     const user = await User.findById('5f01bbffa15a1147b89ff844')
 
     await user.populate('tasks').execPopulate()
-    // This will find all tasks created specifically by this user, and add it to a real user.tasks array from the virtual relationship
+    // This will find all tasks created specifically by this user, and add it to a real user.tasks array = require(the virtual relationship
     console.log(user.tasks)
 
 }

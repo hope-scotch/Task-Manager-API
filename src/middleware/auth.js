@@ -1,6 +1,6 @@
 // Single file for each piece of middleware
-import jwt from 'jsonwebtoken'
-import { User } from '../models/user.js'
+const jwt = require('jsonwebtoken')
+const { User } = require('../models/user.js')
 
 // Authentication Middleware
 const auth = async (req, res, next) => {
@@ -21,7 +21,7 @@ const auth = async (req, res, next) => {
         }
 
         // JS Object Properties can be set using dot and assign
-        // We attach -> token prop to req, user prop to req -> and this can be retreived from the request object any time auth is called
+        // We attach -> token prop to req, user prop to req -> and this can be retreived = require(the request object any time auth is called
         req.token = token
         
         // In the middle of the call, set the request to contain the user
@@ -33,4 +33,4 @@ const auth = async (req, res, next) => {
     }
 }
 
-export { auth }
+module.exports = auth

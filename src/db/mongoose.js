@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 // Similar to MongoClient.connect -> basically connects us to the db
 // mongoose uses mongodb module bts -> dbname goes into connectionURL

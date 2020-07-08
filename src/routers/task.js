@@ -1,6 +1,6 @@
-import express from 'express'
-import { auth } from '../middleware/auth.js'
-import { Task } from '../models/task.js'
+const express = require('express')
+const auth = require('../middleware/auth.js')
+const Task = require('../models/task.js')
 
 const router = new express.Router()
 
@@ -114,7 +114,7 @@ router.get('/tasks/:id', auth, async (req, res) => {
 // Task Update Endpoint
 router.patch('/tasks/:id', auth, async (req, res) => {
 
-    const updates = Object.keys(req.body) // Keys from key-value pairs -> An array of Keys Only
+    const updates = Object.keys(req.body) // Keys = require(key-value pairs -> An array of Keys Only
     const allowed = ['description', 'completed']
     const isValid = updates.every( (update) =>  // => For Every Update
         allowed.includes(update)
@@ -159,4 +159,4 @@ router.delete('/tasks/:id', auth, async (req, res) => {
 })
 
 
-export { router as taskRouter}
+module.exports = router

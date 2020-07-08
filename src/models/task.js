@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const taskSchema = new mongoose.Schema({
     description: {
@@ -33,4 +33,4 @@ task.save().then( () => {
     console.log(error)
 }) */
 
-export { Task }
+module.exports = Task

@@ -1,5 +1,5 @@
 // sendgrid allows us to send emails
-import sgMail from '@sendgrid/mail'
+const sgMail = require('@sendgrid/mail')
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
@@ -36,4 +36,4 @@ const goodbyeEmail = (email, name) => {
     })
 }
 
-export { welcomeEmail, goodbyeEmail }
+module.exports = { welcomeEmail, goodbyeEmail }
